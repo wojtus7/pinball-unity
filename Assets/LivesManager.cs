@@ -12,7 +12,7 @@ public class LivesManager : MonoBehaviour
     void Awake()
     {
         text = GetComponent <Text> ();
-        lives = 0;
+        lives = 3;
     }
 
     // Update is called once per frame

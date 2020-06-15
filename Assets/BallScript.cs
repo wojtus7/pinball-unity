@@ -14,7 +14,7 @@ public class BallScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.z < -10 && LivesManager.lives > 0) {
+        if(transform.position.z < -10 && LivesManager.lives > 1) {
             LivesManager.lives -= 1;
             GetComponent<Rigidbody>().velocity = Vector3.zero;
             GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
