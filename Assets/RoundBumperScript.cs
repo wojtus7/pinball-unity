@@ -15,7 +15,7 @@ public class RoundBumperScript : MonoBehaviour{
             r.velocity = Vector3.zero;
             r.angularVelocity = Vector3.zero;
             r.AddForce (power * myVector.normalized);
-            ScoreManager.score += scoreValue;
+            ScoreManager.score +=  PointsManager.multiplier * scoreValue;
         }
     }
 }

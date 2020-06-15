@@ -49,12 +49,14 @@ public class PlungerScript : MonoBehaviour {
     private void OnTriggerEnter (Collider other) {
         if (other.gameObject.CompareTag ("Ball")) {
             ballList.Add (other.gameObject.GetComponent<Rigidbody> ());
+            CameraManager.cameraPosition = 1;
         }
     }
     private void OnTriggerExit (Collider other) {
         if (other.gameObject.CompareTag ("Ball")) {
             ballList.Remove (other.gameObject.GetComponent<Rigidbody> ());
             power = 0f;
+            CameraManager.cameraPosition = 0;
         }
     }
 }
