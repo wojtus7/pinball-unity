@@ -10,6 +10,7 @@ public class PlungerScript : MonoBehaviour {
     public Slider powerSlider;
     List<Rigidbody> ballList;
     bool ballReady;
+    public Object plunger;
 
     // Start is called before the first frame update
     void Start () {
@@ -28,6 +29,7 @@ public class PlungerScript : MonoBehaviour {
         }
 
         powerSlider.value = power;
+        transform.position = new Vector3(4.25f,0.25f,-6.3f - power/3000);
         if (ballList.Count > 0) {
             ballReady = true;
             if (Input.GetKey (KeyCode.Space)) {
@@ -38,6 +40,7 @@ public class PlungerScript : MonoBehaviour {
             if (Input.GetKeyUp (KeyCode.Space)) {
                 foreach (Rigidbody r in ballList) {
                     r.AddForce (power * Vector3.forward);
+                    power = 0f;
                 }
             }
         } else {
@@ -55,7 +58,6 @@ public class PlungerScript : MonoBehaviour {
     private void OnTriggerExit (Collider other) {
         if (other.gameObject.CompareTag ("Ball")) {
             ballList.Remove (other.gameObject.GetComponent<Rigidbody> ());
-            power = 0f;
             CameraManager.cameraPosition = 0;
         }
     }
